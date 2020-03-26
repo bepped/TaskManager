@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
 
    QApplication::setQuitOnLastWindowClosed(false);
 
-   TaskManager tskmgr(5);
-   tskmgr.show();
+   TaskManager taskmanager;
+   taskmanager.show();
    return app.exec();
 }

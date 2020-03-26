@@ -14,12 +14,17 @@
 #include <QString>
 #include <QTimer>
 #include <QVector>
+#include <QSettings>
+#include <QCoreApplication>
 
 #include "TaskEditor.h"
 
-TaskManager::TaskManager(ushort number_of_tasks):
+TaskManager::TaskManager():
     taskmanager_icon{":/img/task_mgr.png"}
 {
+    QString ini{QCoreApplication::applicationDirPath() + "/taskmanager.ini"};
+    QSettings settings(ini, QSettings::IniFormat);
+    number_of_tasks = settings.value("number", 1).toInt();
     taskVector = QVector<Task>(number_of_tasks);
     execTimer = new QTimer(this);
     execTimer->start(1000);
@@ -71,8 +76,7 @@ void TaskManager::createTaskGroupBox()
 
     QGridLayout *taskBoxLayout = new QGridLayout;
 
-    int num_of_tasks = taskVector.size();
-    for (int i = 0; i < num_of_tasks; ++i) {
+    for (int i = 0; i < number_of_tasks; ++i) {
             QPushButton *button = new QPushButton("Configura task: " + QString::number(i));
             connect(button, &QPushButton::clicked, [=] { showTaskEditor(taskVector[i]); });
             taskBoxLayout->addWidget(button, i, 3);

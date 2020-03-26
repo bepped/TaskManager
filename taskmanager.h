@@ -27,6 +27,7 @@ class TaskManager : public QDialog
     Q_OBJECT
 
     QString taskmanager_icon;
+    int number_of_tasks;
     QTimer *execTimer;
     QVector<Task> taskVector;
 
@@ -51,7 +52,7 @@ protected:
     void closeEvent(QCloseEvent *event) override;
 
 public:
-    TaskManager(ushort number_of_tasks);
+    TaskManager();
 
 };
 
