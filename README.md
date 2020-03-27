@@ -2,7 +2,7 @@
 
 Semplice task manager che esegue contemporaneamente un certo numero di task.
 Il numero di task viene impostato nel file taskmanager.ini presente nella directory dell'eseguibile.
-Nel file deve essere presente la seguente riga: number=<numero di task>.
+Nel file deve essere presente la seguente riga: number=[numero di task].
 Nel caso in cui non fosse presente il file o la riga di cui sopra, viene generato un solo task.
 
 Ogni task viene configurato tramite un task editor, attraverso il quale si devono:
